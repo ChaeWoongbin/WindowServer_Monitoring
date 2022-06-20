@@ -35,8 +35,28 @@ namespace M_Client
             SetProgram(); // 프로그램 실행
         }
 
+        // 프로그램 실행 값
         private void SetProgram()
         {
+            // 트레이
+            System.Windows.Forms.NotifyIcon ni = new System.Windows.Forms.NotifyIcon();
+            try
+            {
+                ni.Icon = new System.Drawing.Icon("monitor.ico");
+                ni.Visible = true;
+                ni.DoubleClick += delegate (object senders, EventArgs args)
+                {
+                    this.Show();
+                    this.WindowState = WindowState.Normal;
+                    this.ShowInTaskbar = true;
+                };
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+
+            // 클라이언트 정보
             try { cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total"); Client.GetData(); Client.GetCPU(); }
             catch { MessageBox.Show("(couCounter Error) starting restore Regi..."); CMD("lodctr /r"); } // 성능 카운터 레지스트리 초기화
 
@@ -62,10 +82,7 @@ namespace M_Client
             cmd.StandardInput.Close();
             cmd.WaitForExit(1);
             Console.WriteLine(cmd.StandardOutput.ReadToEnd());
-        }
-
-       
-
+        }      
 
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -76,6 +93,31 @@ namespace M_Client
             lbl_Memory_value.Content = Client.Memory.ToString() + " / " + Client.Memory_Max + " GB" + " ( " + Client.Memory_percent + " ) ";
             lbl_drive_value.Content = Client.drive.ToString() + " GB";
             lbl_Server_value.Content = Client.connect.ToString();
+        }
+
+        //윈도우 트레이
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Tray_Event();
+            e.Cancel = true;
+            return;
+        }
+
+        // esc 입력시 트레이 | q 입력시 종료
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Escape: Tray_Event(); break;
+                case Key.Q: Application.Current.Shutdown(); break;
+            }
+        }
+
+        // 트레이 이동
+        void Tray_Event()
+        {
+            this.WindowState = WindowState.Minimized;
+            this.ShowInTaskbar = false;
         }
     }
 }

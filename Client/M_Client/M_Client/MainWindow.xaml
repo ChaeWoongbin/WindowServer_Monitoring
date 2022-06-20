@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:M_Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="216.393" Width="423.77">
+        Title="Dentis_Client" Icon="/asset/Monitor_title.png" Height="216.393" Width="423.77" KeyDown="Window_KeyDown" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
