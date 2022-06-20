@@ -24,30 +24,32 @@ namespace M_Client
         public DriveInfo storageCheck;
 
 
-        public string CPU = "";
+        public int CPU = 0;
         public string Memory = "";
         public string Memory_percent = "";
+        public string Memory_Max = "";
         public string drive = "";
         public bool connect = false;
 
         public void GetData()
         {
-            GetCPU();
+            //GetCPU();
             GetMemory();
             Getdrive();
             Getconnect();
         }
 
 
-        private void GetCPU()
+        public void GetCPU()
         {
             cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
-            CPU = cpuCounter.NextValue().ToString();
+            CPU = (int)cpuCounter.NextValue(); // ((int)cpuCounter.NextValue()).ToString();
         }
         private void GetMemory()
         {
             memCounter = new PerformanceCounter("Memory", "Available MBytes");
-            Memory = ((Convert.ToDouble(memCounter.NextValue())) / 1024).ToString("N2");
+            Memory = ((RAM_Check() / 1024 / 1024) - ((Convert.ToDouble(memCounter.NextValue())) / 1024)).ToString("N2");
+            Memory_Max = (RAM_Check() / 1024 / 1024).ToString("N2");
             Memory_percent = ram_percentage(RAM_Check()).ToString("N2") + "%";
         }
         private void Getdrive()

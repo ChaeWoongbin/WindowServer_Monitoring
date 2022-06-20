@@ -28,7 +28,7 @@ namespace M_Client
         private DispatcherTimer Timer;
         ClientInfo Client = new ClientInfo();
 
-
+        private PerformanceCounter cpuCounter;
         public MainWindow()
         {
             InitializeComponent();
@@ -37,11 +37,11 @@ namespace M_Client
 
         private void SetProgram()
         {
-            try { Client.GetData(); }
+            try { cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total"); Client.GetData(); Client.GetCPU(); }
             catch { MessageBox.Show("(couCounter Error) starting restore Regi..."); CMD("lodctr /r"); } // 성능 카운터 레지스트리 초기화
 
             Timer = new DispatcherTimer();
-            Timer.Interval = new TimeSpan(0, 0, 0, 10, 0); // 10초당 타이머 실행
+            Timer.Interval = new TimeSpan(0, 0, 0, 1, 0); // 10초당 타이머 실행
             Timer.Tick += Timer_Tick;
             Timer.Start();
         }
@@ -71,7 +71,11 @@ namespace M_Client
         {
             try { Client.GetData(); }
             catch { MessageBox.Show("(couCounter Error) starting restore Regi..."); CMD("lodctr /r"); } // 성능 카운터 레지스트리 초기화
-            test.Text = Client.Memory + "%";
+
+            lbl_CPU_value.Content = (int)cpuCounter.NextValue() + " %";
+            lbl_Memory_value.Content = Client.Memory.ToString() + " / " + Client.Memory_Max + " GB" + " ( " + Client.Memory_percent + " ) ";
+            lbl_drive_value.Content = Client.drive.ToString() + " GB";
+            lbl_Server_value.Content = Client.connect.ToString();
         }
     }
 }
