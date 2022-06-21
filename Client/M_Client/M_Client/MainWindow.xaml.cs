@@ -4,7 +4,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management;
+using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using static M_Client.Client_Socket;
 
 namespace M_Client
 {
@@ -27,6 +30,7 @@ namespace M_Client
         // 반복
         private DispatcherTimer Timer;
         ClientInfo Client = new ClientInfo();
+        Client_Socket s_Client = new Client_Socket();
 
         private PerformanceCounter cpuCounter;
         public MainWindow()
@@ -86,13 +90,33 @@ namespace M_Client
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            try { Client.GetData(); }
-            catch { MessageBox.Show("(couCounter Error) starting restore Regi..."); CMD("lodctr /r"); } // 성능 카운터 레지스트리 초기화
 
-            lbl_CPU_value.Content = (int)cpuCounter.NextValue() + " %";
-            lbl_Memory_value.Content = Client.Memory.ToString() + " / " + Client.Memory_Max + " GB" + " ( " + Client.Memory_percent + " ) ";
-            lbl_drive_value.Content = Client.drive.ToString() + " GB";
-            lbl_Server_value.Content = Client.connect.ToString();
+            this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
+            {
+                try { Client.GetData(); }
+                catch { MessageBox.Show("(couCounter Error) starting restore Regi..."); CMD("lodctr /r"); } // 성능 카운터 레지스트리 초기화
+
+                cpu_value.Text = (int)cpuCounter.NextValue() + "";
+                lbl_CPU_value.Content = cpu_value.Text + " %";
+                lbl_Memory_value.Content = Client.Memory.ToString() + " / " + Client.Memory_Max + " GB" + " ( " + Client.Memory_percent + " ) ";
+                lbl_drive_value.Content = Client.drive.ToString() + " GB";
+                //lbl_Server_value.Content = Client.connect.ToString();
+                                
+                s_Client.CPU_use = cpu_value.Text;
+
+
+                //send_packet("393500" + value.Text);
+                AsyncObject ao = new AsyncObject(1);
+                ao.Buffer = stringtobyte("3935" + s_Client.CPU_use.ToString().PadLeft(4, '0'));
+                ao.WorkingSocket = s_Client.m_ClientSocket;
+                try
+                {
+                    s_Client.m_ClientSocket.BeginSend(ao.Buffer, 0, ao.Buffer.Length, SocketFlags.None, s_Client.m_fnSenderHandler, ao);
+                }
+                catch (Exception ex)
+                {
+                }
+            });
         }
 
         //윈도우 트레이
@@ -118,6 +142,12 @@ namespace M_Client
         {
             this.WindowState = WindowState.Minimized;
             this.ShowInTaskbar = false;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            s_Client.m_ClientSocket.Close();
+            s_Client = new Client_Socket();
         }
     }
 }

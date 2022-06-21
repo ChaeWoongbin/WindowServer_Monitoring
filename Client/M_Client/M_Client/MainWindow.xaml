@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:M_Client"
         mc:Ignorable="d"
-        Title="Dentis_Client" Icon="/asset/Monitor_title.png" Height="216.393" Width="423.77" KeyDown="Window_KeyDown" Closing="Window_Closing">
+        Title="Dentis_Client" Icon="/asset/Monitor_title.png" Height="241.888" Width="426.879" KeyDown="Window_KeyDown" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -27,21 +27,25 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Label Name="lbl_CPU" VerticalAlignment="Center"> CPU 사용량 :</Label>
+            <Label Name="lbl_CPU" VerticalAlignment="Center">CPU 사용량 :</Label>
             <Label Name="lbl_CPU_value" Grid.Column="1" VerticalAlignment="Center"></Label>
+            <TextBox Name="cpu_value" Visibility="Hidden"/>
 
 
-            <Label Name="lbl_Memory" VerticalAlignment="Center" Grid.Row="1"> Memory 사용량 :</Label>
+            <Label Name="lbl_Memory" VerticalAlignment="Center" Grid.Row="1">Memory 사용량 :</Label>
             <Label Name="lbl_Memory_value" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"></Label>
 
 
-            <Label Name="lbl_drive" VerticalAlignment="Center" Grid.Row="2"> drive 여유분 :</Label>
-            <Label Name="lbl_drive_value" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"></Label>
+            <Label Name="lbl_drive" VerticalAlignment="Center" Grid.Row="2" >drive 여유분 :</Label>
+            <Label Name="lbl_drive_value" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" ></Label>
 
 
-            <Label Name="lbl_Server" VerticalAlignment="Center" Grid.Row="3"> 서버연결 상태 :</Label>
+            <Label Name="lbl_Server" VerticalAlignment="Center" Grid.Row="3" Visibility="Hidden">서버연결 상태 :</Label>
             <Label Name="lbl_Server_value" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"></Label>
+
+            <Button Grid.Row="4" Grid.Column="1" Margin="20,5,20,5" Click="Button_Click">서버연결 Reset</Button>
 
         </Grid>
 
