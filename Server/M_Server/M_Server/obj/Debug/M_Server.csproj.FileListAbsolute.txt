@@ -1,0 +1,15 @@
+C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\bin\Debug\M_Server.exe.config
+C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\bin\Debug\M_Server.exe
+C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\bin\Debug\M_Server.pdb
+C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\M_Server.csprojAssemblyReference.cache
+C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\MainWindow.g.cs
+C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\App.g.cs
+C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\M_Server_MarkupCompile.cache
+C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\M_Server_MarkupCompile.lref
+C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\MainWindow.baml
+C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\M_Server.g.resources
+C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\M_Server.Properties.Resources.resources
+C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\M_Server.csproj.GenerateResource.cache
+C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\M_Server.csproj.CoreCompileInputs.cache
+C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\M_Server.exe
+C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\M_Server.pdb
