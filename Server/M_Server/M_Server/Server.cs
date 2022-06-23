@@ -32,7 +32,7 @@ namespace M_Server
 
             //IPEndPoint ipep = new IPEndPoint(IPAddress.Any, 2020);
             // 모든 IP의 2020포트 연결 ( EndPoint - 네트워크 목적지 (device))
-            IPEndPoint ipep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 2020);
+            IPEndPoint ipep = new IPEndPoint(IPAddress.Parse(ip_info), 2020);
             // IP의 2020포트 연결 ( EndPoint - 네트워크 목적지 (device))
 
             m_ServerSocket.Bind(ipep);

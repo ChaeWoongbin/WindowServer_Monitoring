@@ -24,7 +24,7 @@ namespace M_Server
     /// </summary>
     public partial class MainWindow : Window
     {
-        Server Server = new Server("127.0.0.1");
+        Server Server = new Server("192.168.1.137");
         private static System.Timers.Timer aTimer;
 
         public MainWindow()
@@ -56,8 +56,47 @@ namespace M_Server
                     result += Convert.ToDouble(list);
                 }
                 lbl.Content = result.ToString("F2"); // 소수점 2자리
+
+                set_clients(); // 연결된 클라이언트 수
             }
            );
+        }
+
+        List<string> old_clients = new List<string>();
+        List<string> new_clients = new List<string>();
+        private void set_clients() // 클라이언트 확인후 리스트 재 작성
+        {
+            foreach (string list in Server.m_ClientSocket.Keys)
+            {
+                new_clients.Add(list);
+            }
+
+            if (old_clients.SequenceEqual(new_clients))
+            {
+
+            }
+            else // Client 변경 감지 
+            {
+                Data.Client_list.Clear();
+                foreach (string list in new_clients)
+                {
+                    Data.Client_list.Add(list);
+                }
+
+                foreach (string list in Data.Client_list)
+                {
+                    Clients_list.Items.Add(list);
+                }
+            }
+
+            old_clients = new List<string>(new_clients);
+            new_clients.Clear();
+        }
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

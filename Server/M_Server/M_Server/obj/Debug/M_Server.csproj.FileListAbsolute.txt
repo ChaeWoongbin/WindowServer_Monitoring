@@ -13,3 +13,5 @@ C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\M_S
 C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\M_Server.csproj.CoreCompileInputs.cache
 C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\M_Server.exe
 C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\M_Server.pdb
+C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\Add_server.g.cs
+C:\Users\N-225\source\repos\ServerMonitor\Server\M_Server\M_Server\obj\Debug\Add_server.baml
