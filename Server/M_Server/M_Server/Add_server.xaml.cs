@@ -23,5 +23,14 @@ namespace M_Server
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            target_ip_info info = new target_ip_info() { ip = txtServerIP.Text, name = txtServerName.Text } ;
+
+            Data.target_list.Add(info);
+            this.DialogResult = true;
+        }
     }
 }

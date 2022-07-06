@@ -97,7 +97,15 @@ namespace M_Server
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Add_server new_server = new Add_server();
+            new_server.ShowDialog();
 
+            string result = "";
+            foreach(target_ip_info a in Data.target_list){
+                result += a.ip;
+            }
+
+            MessageBox.Show(result);
         }
     }
 }

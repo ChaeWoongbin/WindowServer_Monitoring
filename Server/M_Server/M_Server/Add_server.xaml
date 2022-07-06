@@ -5,11 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:M_Server"
         mc:Ignorable="d"
-        Title="Add_server" Height="162.295" Width="284.836">
+        Title="Add_server" Height="169.833" Width="299.026">
     <Grid>
-        <Button Content="추가" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="93" Height="26"/>
+        <Button Content="추가" HorizontalAlignment="Left" Margin="174,95,0,0" VerticalAlignment="Top" Width="93" Height="26" Click="Button_Click"/>
         <Label Content="대상 IP :" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Height="28" Width="115"/>
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="140,13,0,0" TextWrapping="Wrap" Text="192.168.0.1" VerticalAlignment="Top" Width="127"/>
+
+        <Label Content="대상 이름 :" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Height="28" Width="115"/>
+        <TextBox Name="txtServerIP" HorizontalAlignment="Left" Height="28" Margin="140,13,0,0" TextWrapping="Wrap" Text="192.168.0.1" VerticalAlignment="Top" Width="127"/>
+        <TextBox Name="txtServerName" HorizontalAlignment="Left" Height="28" Margin="140,50,0,0" TextWrapping="Wrap" Text="Server 1" VerticalAlignment="Top" Width="127"/>
 
     </Grid>
 </Window>
