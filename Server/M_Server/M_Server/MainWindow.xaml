@@ -14,7 +14,7 @@
         <Label Content="Server 2" HorizontalAlignment="Left" Margin="241,44,0,0" VerticalAlignment="Top" Width="107"/>
         <Label Name="lbl2" Content="Label" HorizontalAlignment="Left" Margin="241,75,0,0" VerticalAlignment="Top" Height="27" Width="76"/>
         <Button Content="클라이언트 세팅" HorizontalAlignment="Left" Margin="668,10,0,0" VerticalAlignment="Top" Width="114" Height="32" Click="Button_Click"/>
-        <ListBox Name="Clients_list" HorizontalAlignment="Left" Height="241" Margin="668,47,0,0" VerticalAlignment="Top" Width="106"/>
+        <ListBox Name="Clients_list" Height="241" Margin="668,47,18,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

@@ -83,6 +83,7 @@ namespace M_Server
                     Data.Client_list.Add(list);
                 }
 
+                Clients_list.Items.Clear();
                 foreach (string list in Data.Client_list)
                 {
                     Clients_list.Items.Add(list);
